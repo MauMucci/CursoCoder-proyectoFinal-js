@@ -1,6 +1,8 @@
 body {
     margin: 0px;
+    font-family: sans-serif;
   }
+
   /*navbar*/
   .nav-container {
     position: sticky;
@@ -10,55 +12,28 @@ body {
   .navbar {
     display: flex;
     justify-content: space-between;
-    height: 12vh;
-    background-color: #1b1b1b;
+    align-items: center;
+    height: 80px;
+    background-color: #c88066;
   }
   
-  .navbar-logo {
-    justify-self: start;
+  .navbar-titulo {
     margin-left: 20px;
     color: #fff;
-    margin-top: 4vh;
-    cursor: pointer;
+    margin-top: 25px;
+    font-family: sans-serif;
+
   }
   
   .ver-carrito {
-    font-size: 25px;
+    background-color: #e8c1c1;
+    border-radius: 30px;
+    font-size: 40px;
     margin-right: 20px;
-    margin-top: 3.5vh;
     cursor: pointer;
   }
   
-  /*Banner styles*/
-  .banner {
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url("https://images.unsplash.com/photo-1553546895-531931aa1aa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80");
-  }
-  
-  .banner-container {
-    text-align: center;
-    padding: 15% 0;
-  }
-  
-  .banner h1 {
-    margin: 0;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    font-size: 62px;
-    font-weight: bold;
-  }
-  
-  .banner p {
-    font-size: 30px;
-    color: white;
-    opacity: 0.7;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  }
-  
-  /*product cards*/
+ 
   .shop-content {
     display: flex;
     justify-content: space-around;
@@ -67,6 +42,7 @@ body {
     margin-left: 60px;
     margin-right: 60px;
   }
+
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
@@ -74,6 +50,7 @@ body {
     text-align: center;
     font-family: arial;
     margin: 10px;
+    border-radius: 30px;
   }
   
   .card > img {
@@ -91,7 +68,8 @@ body {
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #000;
+    background-color:#c88066;
+    border-radius: 30px;
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -108,35 +86,49 @@ body {
     margin: 0 10%;
     max-height: 88vh;
     color: #fff;
-    background-color: #121212;
+    background-color: #c88066;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*for the top*/
     position: fixed;
     overflow: auto;
-    z-index: 9;
-    top: 12vh;
+    top: 80px;
     scrollbar-color: none;
   }
   
-  .modal-div::-webkit-scrollbar {
+   .modal-div::-webkit-scrollbar {
     display: none;
-  }
+  } 
+
   .modal-header {
     display: flex;
+    align-items: center;
     justify-content: space-around;
-    background-color: #0a0909;
+    background-color: #c88066;
     color: #fff;
     width: 100%;
-  }
   
-  .modal-header-title {
-    justify-self: start;
   }
-  
+
+  img{
+    border-radius: 30px;
+  }
+
+.contenido-carrito{
+  width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #c88066;
+}
+
   .modal-header-button {
     cursor: pointer;
+    height: 40px;
+    background-color:beige;
+    border-radius: 20px;
   }
   
   .modal-div > .modal-content {
@@ -158,53 +150,25 @@ body {
     padding: 20px;
     text-align: center;
     padding-top: 20px;
+    border-radius: 30px;
+    background-color: #e8c1c1;
   }
   
-  /*se agregaron unas lineas de css con media querys para que se adapte mejor al responsive :)*/
-  
-  @media only screen and (max-width: 750px) {
-    .modal-div {
-      width: 100%;
-      margin: 0;
-      min-height: 88vh;
-    }
-  
-    .modal-div > .modal-content {
-      justify-content: space-between;
-      width: 100%;
-      margin: 2px;
-    }
-  
-    .modal-div > div > img {
-      height: 80px;
-      width: 80px;
-    }
-  }
-  
+.clima-div{
+  background-color:#c88066;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+
   /*delete button product*/
   .boton-borrar {
     cursor: pointer;
     color: red;
     background-color: white;
+    border-radius: 10px;
   }
   
-  /*CarritoCounter*/
-  .cantidad-carrito {
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    font-size: 12px;
-    padding: 4px;
-    top: 37px;
-    right: 14px;
-    position: absolute;
-    display: none;
-  }
   
-  .sumar {
-    cursor: pointer;
-  }
   
-  .restar {
-    cursor: pointer;
-  }

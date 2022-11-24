@@ -3,7 +3,7 @@ let productos = [
     {
         id: 1,
         nombre: "Brownie",
-        precio: 4000,
+        precio: 2000,
         img:"imagenes/Brownie-edit.jpeg",
         
     },
@@ -17,13 +17,13 @@ let productos = [
     {
         id: 3,
         nombre: "Lemon Pie",
-        precio: 4000,
+        precio: 3000,
         img:"imagenes/Lemon-pie-edit.jpeg",
     },
     {
         id: 4,
         nombre: "Torta",
-        precio: 4000,
+        precio: 2500,
         img:"imagenes/Torta-con-galletitas-edit.jpeg",
     
     }

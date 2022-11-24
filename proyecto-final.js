@@ -1,6 +1,11 @@
 let shop_content = document.getElementById("shop-content");
 let ver_carrito = document.getElementById("ver-carrito");
 let modal_div = document.getElementById("modal-div");
+let clima_div = document.getElementById("clima-div");
+
+
+let DateTime = luxon.DateTime;
+console.log(DateTime)
 
 
 //cargo lo que esta en el LS ó un carrito vacio
@@ -15,7 +20,7 @@ productos.forEach((product) => {
     card_elemento.innerHTML = `
     <img src ="${product.img}">
     <h3> ${product.nombre}</h3>
-    <p class ="precio" >${product.precio}</p>
+    <p class ="precio" > $ ${product.precio}</p>
     `
     ;
 
@@ -36,9 +41,12 @@ productos.forEach((product) => {
             precio:product.precio
         });
         guardar_LS();
+
         Toastify({
             text: "Producto agregado al carrito",
             duration:1000,
+            gravity: "bottom",
+            position: "left",
             className: "info",
             style: {
               background: "linear-gradient(to right, #00b09b, #96c93d)",
@@ -79,19 +87,19 @@ let refrescar_carrito= () =>{
         contenido_carrito.className="contenido-carrito"
         contenido_carrito.innerHTML = `
         <img src="${product.img}">
-        <h3>${product.nombre}></h3>
-        <p>${product.precio} </p>
+        <h3>${product.nombre} </h3>
+        <p>$ ${product.precio} </p>
 
         `;
         modal_div.append(contenido_carrito);
 
         //creo el boton borrar
-     let boton_borrar = document.createElement("button");
-     boton_borrar.className = "boton-borrar";
-     boton_borrar.innerText="BORRAR";
-     modal_div.append(boton_borrar);
+        let boton_borrar = document.createElement("button");
+        boton_borrar.className = "boton-borrar";
+        boton_borrar.innerText="BORRAR";
+        contenido_carrito.append(boton_borrar);
 
-     boton_borrar.addEventListener("click",() => {eliminar_producto(product.id) });
+        boton_borrar.addEventListener("click",() => {eliminar_producto(product.id) });
     });
     
     //calculo el monto total
@@ -112,6 +120,16 @@ let eliminar_producto = (id) => {
     });
     refrescar_carrito();
     guardar_LS();
+    Toastify({
+        text: "Producto borrado del carrito",
+        duration:1000,
+        gravity: "bottom",
+        position: "right",
+        className: "producto_borrado",
+        style: {
+          background: "linear-gradient(to right, #9b1845, #996e7d)",
+        }
+      }).showToast();
 
     };
 
@@ -121,3 +139,18 @@ let guardar_LS = () =>{
     localStorage.setItem("carrito", JSON.stringify(carrito));
 };
 
+//Fetch y clima
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&lang=es&units=metric&appid=a9e10258cf0e599a2cc1fdf9eaf61083")
+    .then(response => response.json())
+    .then(data => {
+        let d = data.main.temp;
+        console.log(data.main.temp_min)
+        if(d > "24"){
+            clima_div.style.backgroundColor = "red";
+            clima_div.innerHTML = `<h1> Dia caluroso 🌡 </h1>`;
+        } 
+        else{
+            clima_div.style.backgroundColor = "blue";
+            clima_div.innerHTML=  `<h1> Dia fresco ❄ </h1>`;
+        }
+    });
